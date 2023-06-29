@@ -32,66 +32,66 @@ public class Dz_2 {
 
 
     public static void main(String[] args) {
-//        String line_1 = "SELECT * FROM students WHERE";
-//        Scanner sc = new Scanner(System.in);
-//
-//        System.out.printf("name?: ");
-//        String name = sc.nextLine();
-//        System.out.printf("country?: ");
-//        String country = sc.nextLine();
-//        System.out.printf("city?: ");
-//        String city = sc.nextLine();
-//        System.out.printf("age?: ");
-//        String age = sc.nextLine();
-//
-//        String sql = String.format("%s name = '%s' AND country = '%s' AND city = '%s' AND age = '%s'", line_1, name,country,city,age);
-//        String [] a = sql.split("AND");
-//
-//        if (name.isEmpty()) {
-//            StringBuilder bulder = new StringBuilder(a[0]);
-//            a[0] = bulder.replace(bulder.indexOf("name"), bulder.length(), "").toString();
-//        }
-//        if (country.isEmpty()) a[1] = "";
-//        else a[1]= "AND" + a[1];
-//        if (city.isEmpty()) a[2]="";
-//        else a[2]= "AND" + a[2];
-//        if (age.isEmpty()) a[3] = "";
-//        else a[3]= "AND" + a[3];
-//
-//        sql = String.join("",a);
-//
-//        System.out.println(sql);
+        String line_1 = "SELECT * FROM students WHERE";
+        Scanner sc = new Scanner(System.in);
 
+        System.out.printf("name?: ");
+        String name = sc.nextLine();
+        System.out.printf("country?: ");
+        String country = sc.nextLine();
+        System.out.printf("city?: ");
+        String city = sc.nextLine();
+        System.out.printf("age?: ");
+        String age = sc.nextLine();
 
+        String sql = String.format("%s name = '%s' AND country = '%s' AND city = '%s' AND age = '%s'", line_1, name,country,city,age);
+        String [] a = sql.split("AND ");
 
-
-        char[] chars = null;
-        try {
-            File file = new File("file");
-            if (!file.exists()) {
-                String s = "Abra kadabra !!  ";
-                FileWriter writer = new FileWriter(file);
-                writer.write(s);
-                writer.append("!@\n");
-                writer.close();
-            } else {
-                FileReader reader = new FileReader(file);
-                chars = new char[(int) file.length()];
-                reader.read(chars);
-            }
-        } catch (IOException e) {
-            System.out.println("There is an exception!)");
+        if (name.isEmpty()) {
+            StringBuilder bulder = new StringBuilder(a[0]);
+            a[0] = bulder.replace(bulder.indexOf("name"), bulder.length(), "").toString();
         }
+        if (country.isEmpty()) a[1] = "";
+        else if (!a[0].isEmpty()) a[1]= "AND" +" "+ a[1];
+        if (city.isEmpty()) a[2]="";
+        else if (!a[0].isEmpty() || !a[1].isEmpty()) a[2]= "AND" +" "+ a[2];
+        if (age.isEmpty()) a[3] = "";
+        else if (!a[0].isEmpty() || !a[1].isEmpty() || !a[2].isEmpty()) a[3]= "AND" +" "+ a[3];
 
-        System.out.println(chars);
+        sql = String.join("",a);
 
-        String line = String.join("", Arrays.toString(chars));
-        line = line.replaceAll("[, ]","").replace("[","").replace("]","").replace("{","");
-        String[] line_2 = line.split("}");
-        line_2[3] = "";
-        System.out.println(Arrays.toString(line_2));
-        line = String.join("||",line_2);
-        System.out.println(line);
+        System.out.println(sql);
+
+
+
+
+//        char[] chars = null;
+//        try {
+//            File file = new File("file");
+//            if (!file.exists()) {
+//                String s = "[{\"фамилия\":\"Иванов\",\"оценка\":\"5\",\"предмет\":\"Математика\"},{\"фамилия\":\"Петрова\",\"оценка\":\"4\",\"предмет\":\"Информатика\"},{\"фамилия\":\"Краснов\",\"оценка\":\"5\",\"предмет\":\"Физика\"}]";
+//                FileWriter writer = new FileWriter(file);
+//                writer.write(s);
+////                writer.append("!@\n");
+//                writer.close();
+//            } else {
+//                FileReader reader = new FileReader(file);
+//                chars = new char[(int) file.length()];
+//                reader.read(chars);
+//            }
+//        } catch (IOException e) {
+//            System.out.println("There is an exception!)");
+//        }
+//
+//        System.out.println(chars);
+//
+//        String line = String.join("", Arrays.toString(chars));
+//        line = line.replaceAll("[, ]","").replace("[","").replace("]","").replace("{","");
+//        String[] line_2 = line.split("}");
+//        line_2[3] = "";
+//        System.out.println(Arrays.toString(line_2));
+//        line = String.join("||",line_2);
+//        System.out.println(line);
 
 
 
