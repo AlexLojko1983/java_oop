@@ -34,18 +34,34 @@ public class Seminar4 {
             System.out.println(ma.get(i)+ " "+ ms.get(i).toUpperCase().charAt(0)+"."+ md.get(i).toUpperCase().charAt(0)+"."+" "+mf.get(i)+" "+(mz.get(i)?"Ж":"М"));
         }
 
-        System.out.println("Сортировать по возрасту да/нет? -> ");
-        String tmp = scanner.nextLine();
-        if (tmp.toLowerCase().contains("да")){
-            id.sort(new Comparator<Integer>() {
+//        System.out.println("Сортировать по возрасту да/нет? -> ");
+//        String tmp = scanner.nextLine();
+//        if (tmp.toLowerCase().contains("да")) {
+//            id.sort(new Comparator<Integer>() {
+//                @Override
+//                public int compare(Integer o1, Integer o2) {
+//
+//                    return mf.get(o1) - mf.get(o2);
+//                }
+//
+//            });
+//            for (int i = 0; i < id.size(); i++) {
+//                System.out.println(ma.get(id.get(i)) + " " + ms.get(id.get(i)).toUpperCase().charAt(0) + "." + md.get(id.get(i)).toUpperCase().charAt(0) + "." + " " + mf.get(id.get(i)) + " " + (mz.get(id.get(i)) ? "Ж" : "М"));
+//            }
+//        }
+
+        System.out.println("Сортировать по возрасту и полу да/нет? -> ");
+        String tmp1 = scanner.nextLine();
+        if (tmp1.toLowerCase().contains("да")){
+            id.sort( new Comparator<Integer>() {
                 @Override
                 public int compare(Integer o1, Integer o2) {
-                    return mf.get(o1)-mf.get(o2);
+                    if (mz.get(o1) == mz.get(o2)) return mf.get(o1) - mf.get(o2);
+                    return 0;
                 }
-
             });
             for (int i = 0; i < id.size(); i++) {
-                System.out.println(ma.get(id.get(i))+ " "+ ms.get(id.get(i)).toUpperCase().charAt(0)+"."+ md.get(id.get(i)).toUpperCase().charAt(0)+"."+" "+mf.get(id.get(i))+" "+(mz.get(id.get(i))?"Ж":"М"));
+                System.out.println(ma.get(id.get(i)) + " " + ms.get(id.get(i)).toUpperCase().charAt(0) + "." + md.get(id.get(i)).toUpperCase().charAt(0) + "." + " " + mf.get(id.get(i)) + " " + (mz.get(id.get(i)) ? "Ж" : "М"));
             }
 
 
