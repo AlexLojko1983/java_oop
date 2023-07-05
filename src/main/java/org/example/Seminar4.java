@@ -21,6 +21,7 @@ public class Seminar4 {
         }
     }
 
+
     static public void sort2(ArrayList<String> ma, ArrayList<String> ms, ArrayList<String> md, ArrayList<Integer> mf, ArrayList<Boolean> mz, ArrayList<Integer> id) {
         id.sort(new Comparator<Integer>() {
             @Override
@@ -57,7 +58,12 @@ public class Seminar4 {
             String tmp = scanner.nextLine();
             if (tmp.toLowerCase().contains("нет")) break;
         }
+
+        System.out.println(id);
         System.out.println(Integer.compare(id.get(0),id.get(1)));
+
+
+
         for (int i = 0; i < ma.size(); i++) {
             System.out.println(ma.get(i) + " " + ms.get(i).toUpperCase().charAt(0) + "." + md.get(i).toUpperCase().charAt(0) + "." + " " + mf.get(i) + " " + (mz.get(i) ? "Ж" : "М"));
         }
