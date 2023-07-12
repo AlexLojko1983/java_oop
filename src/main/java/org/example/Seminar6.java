@@ -2,8 +2,9 @@ package org.example;
 
 
 import javax.swing.text.html.HTMLDocument;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Stream;
 
 
 public class Seminar6 {
@@ -24,8 +25,7 @@ public class Seminar6 {
         while (iter.hasNext()){
             System.out.printf("%d ",iter.next());
         }
-
-
+        myset.key();
     }
 }
 class MySet<T> {
@@ -44,5 +44,13 @@ class MySet<T> {
     }
     public Iterator<T> iterator(){
         return map.keySet().iterator();
+    }
+    public void key() {
+        Set<Map.Entry<T, Object>> entrySet = map.entrySet();
+        for (Map.Entry<T, Object> pair : entrySet) {
+            if (myo.equals(pair.getValue())) {
+                System.out.println(pair.getKey());// нашли наше значение и возвращаем  ключ
+            }
+        }
     }
 }
