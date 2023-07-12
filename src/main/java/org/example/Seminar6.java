@@ -16,16 +16,14 @@ public class Seminar6 {
         System.out.println((myset.add(null)));
         System.out.println((myset.add(4165)));
         System.out.println(myset);
-//        System.out.println((myset.remove(4165)));
-//        System.out.println(myset.remove(null));
-//        System.out.println(myset.remove(65456));
+        System.out.println((myset.remove(4165)));
+        System.out.println(myset.remove(null));
+        System.out.println(myset.remove(65456));
         System.out.println(myset);
         Iterator<Integer> iter = myset.iterator();
         while (iter.hasNext()){
             System.out.printf("%d ",iter.next());
         }
-
-
     }
 }
 class MySet<T> {
