@@ -39,8 +39,8 @@ abstract class People implements PeopleBehaviour {
 
     public People(String name) {
         this.name = name;
-//        isMakeOrder = false;
-//        isTakeOrder = false;
+        isMakeOrder = false;
+        isTakeOrder = false;
     }
 
     public String getName() {
@@ -50,26 +50,12 @@ abstract class People implements PeopleBehaviour {
     public abstract void setMakeOrder(boolean b);
 
     public abstract void setTakeOrder(boolean b);
-
-//    public abstract void setMakeOrder(boolean isMakeOrder);
-//
-//    public abstract void setTakeOrder(boolean isTakeOrder);
 }
 
 class Human extends People {
     public Human(String name) {
         super(name);
     }
-//
-//    @Override
-//    public void setMakeOrder(boolean isMakeOrder) {
-//        this.isMakeOrder = isMakeOrder;
-//    }
-//
-//    @Override
-//    public void setTakeOrder(boolean isTakeOrder) {
-//        this.isTakeOrder = isTakeOrder;
-//    }
 
     @Override
     public void setMakeOrder(boolean b) {
