@@ -47,6 +47,10 @@ abstract class People implements PeopleBehaviour {
         return name;
     }
 
+    public abstract void setMakeOrder(boolean b);
+
+    public abstract void setTakeOrder(boolean b);
+
 //    public abstract void setMakeOrder(boolean isMakeOrder);
 //
 //    public abstract void setTakeOrder(boolean isTakeOrder);
@@ -68,13 +72,23 @@ class Human extends People {
 //    }
 
     @Override
+    public void setMakeOrder(boolean b) {
+        this.isMakeOrder = b;
+    }
+
+    @Override
+    public void setTakeOrder(boolean b) {
+        this.isTakeOrder = b;
+    }
+
+    @Override
     public void setMakeOrder() {
-        this.isMakeOrder = isMakeOrder;
+
     }
 
     @Override
     public void setTakeOrder() {
-        this.isTakeOrder = isTakeOrder;
+
     }
 }
 
@@ -82,39 +96,49 @@ class Human extends People {
 class Market implements MarketBehaviour, QueueBehaviour {
 
     private List<People> queue;
+    private List<People> market;
     public Market(){
         queue = new ArrayList<>();
+        market = new ArrayList<>();
     }
 
     @Override
     public void takeInQueue(People people) {
         queue.add(people);
-        System.out.println(people.getName() + "Становится в очередь");
+        System.out.println(people.getName() + " Становится в очередь");
     }
 
     @Override
     public void takeOrders(People people) {
-        people.
+        people.setTakeOrder(true);
+        System.out.println(people.getName() + " получает заказ");
     }
 
     @Override
     public void giveOrders(People people) {
+        people.setMakeOrder(true);
+        System.out.println(people.getName() + " делает заказ");
 
     }
 
     @Override
     public void releaseFromQueue(People people) {
+        queue.remove(people);
+        market.remove(people);
+        System.out.println(people.getName() + " покидает очередь");
 
     }
 
     @Override
     public void acceptToMarket(People people) {
+        market.add(people);
+        System.out.println(people.getName() + " входит в магазин");
 
     }
 
     @Override
-    public void releaseFromMarket(List<People> queue) {
-
+    public void releaseFromMarket(List<People> market) {
+        System.out.println(market);
     }
 
     @Override
