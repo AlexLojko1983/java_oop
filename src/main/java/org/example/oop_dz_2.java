@@ -25,7 +25,7 @@ interface QueueBehaviour {
 interface MarketBehaviour {
     void acceptToMarket(People people);
 
-    void releaseFromMarket();
+    void releaseFromMarket(People people);
 
     void update();
 
@@ -110,7 +110,6 @@ class Market implements MarketBehaviour, QueueBehaviour {
     @Override
     public void releaseFromQueue(People people) {
         queue.remove(people);
-        market.remove(people);
         System.out.println(people.getName() + " покидает очередь");
 
     }
@@ -123,30 +122,30 @@ class Market implements MarketBehaviour, QueueBehaviour {
     }
 
     @Override
-    public void releaseFromMarket() {
-        for (int i = 0; i<market.size();i++){
-            System.out.printf(market.get(i).getName()+ ", ");}
-        System.out.println("Сейчас в магазине");
+    public void releaseFromMarket(People people) {
+        market.remove(people);
+        System.out.println(people.getName() + " покидает магазин");
+
     }
 
     @Override
     public void update() {
-
+        for (int i = 0; i<market.size();i++){
+            System.out.printf(market.get(i).getName()+ ", ");}
+        System.out.println("Сейчас в магазине");
     }
 }
 
-
 public class oop_dz_2 {
     public static void main(String[] args) {
-        String name1 = "Alex";
-        String name2 = "Ben";
-        Human human = new Human(name1);
-        Human men = new Human(name2);
+        Human human = new Human("Alex");
+        Human men = new Human("Ben");
         Market market = new Market();
         market.acceptToMarket(human);
         market.giveOrders(human);
         market.takeOrders(human);
         market.acceptToMarket(men);
-        market.releaseFromMarket();
+        market.releaseFromMarket(human);
+        market.update();
     }
 }
